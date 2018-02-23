@@ -12,7 +12,7 @@ module.exports = (app) => {
         '/auth/facebook/callback', 
         passport.authenticate('facebook'),
         (req, res) => {
-            res.json(200, "Everything's Good");
+            res.status(200).json({'msg': "Everything's Good"});
         }
     );
 

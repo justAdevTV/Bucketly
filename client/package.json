@@ -2,7 +2,16 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": {
+    "/auth/facebook": {
+      "target": "http://localhost:5000"
+    },
+    "/api/*": {
+      "target": "http://localhost:5000"
+    }
+  },
   "dependencies": {
+    "concurrently": "^3.5.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1"

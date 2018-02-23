@@ -12,7 +12,7 @@ module.exports = (app) => {
         '/auth/facebook/callback', 
         passport.authenticate('facebook'),
         (req, res) => {
-            res.status(200).json({'msg': "Everything's Good"});
+            res.redirect('/');
         }
     );
 
@@ -22,5 +22,6 @@ module.exports = (app) => {
 
     app.get('/api/logout', (req, res) => {
         req.logout();
+        res.redirect('/');
     });
 }

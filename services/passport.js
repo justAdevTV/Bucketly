@@ -27,7 +27,6 @@ passport.use(new FacebookStrategy({
                 // We already have record
                 return done(null, existingUser);
             } 
-             
             const user = await new User({facebookId: profile.id}).save();
             done(null, user);
         }

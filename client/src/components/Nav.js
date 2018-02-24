@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Nav extends Component {
 
@@ -10,12 +11,12 @@ class Nav extends Component {
             case false:
                 return [
                     <li key="login"><a href="/auth/facebook">Login</a></li>,
-                    <li key="lists"><a href=""></a>Lists</li>
+                    <li key="lists"><Link to="/lists">Lists</Link></li>
                 ];
             default:
                 return [
-                    <li key="lists"><a>Lists</a></li>,
-                    <li key="createList"><a>CreateList</a></li>,
+                    <li key="lists"><Link to="/lists">Lists</Link></li>,
+                    <li key="createList"><Link to="lists/create">Create List</Link></li>,
                     <li key="logout"><a href="/api/logout">Logout</a></li>
                 ]
         }
@@ -26,7 +27,7 @@ class Nav extends Component {
             <nav className="blue">
                 <div className="container">
                     <div className="nav-wrapper">
-                        <a href="" className="brand-logo">Bucketly</a>
+                        <Link to="/" className="brand-logo">Bucketly</Link>
                         <a href="" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
                         <ul className="right hide-on-med-and-down">
                             {this.renderContent()}

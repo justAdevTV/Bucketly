@@ -8,10 +8,14 @@ class Nav extends Component {
             case null:
                 return;
             case false:
-                return <li><a href="/auth/facebook">Login</a></li>;
+                return [
+                    <li key="login"><a href="/auth/facebook">Login</a></li>,
+                    <li key="lists"><a href=""></a>Lists</li>
+                ];
             default:
                 return [
-                    <li key="greeting">Welcome Back!</li>,
+                    <li key="lists"><a>Lists</a></li>,
+                    <li key="createList"><a>CreateList</a></li>,
                     <li key="logout"><a href="/api/logout">Logout</a></li>
                 ]
         }

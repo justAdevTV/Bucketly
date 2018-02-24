@@ -8,7 +8,7 @@ class Nav extends Component {
             case null:
                 return;
             case false:
-                return <li><a href="/auth/facebook">Login With Facebook</a></li>;
+                return <li><a href="/auth/facebook">Login</a></li>;
             default:
                 return [
                     <li key="greeting">Welcome Back!</li>,

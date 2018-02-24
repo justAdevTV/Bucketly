@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const listItemSchema = new Schema({
     title: String,
     description: String,
-    isComplete: Boolean
+    isComplete: { type: Boolean, default: false }
 });
 
 module.exports = listItemSchema;

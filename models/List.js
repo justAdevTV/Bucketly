@@ -4,10 +4,10 @@ const ListItemSchema = require('./ListItem');
 
 const listSchema = new Schema({
     listName: String,
-    favorites: Number,
+    favorites: { type: Number, default: 0 },
     items: [ListItemSchema],
     _user: { type: Schema.Types.ObjectId, ref: 'User'},
     creationDate: Date
 }); 
 
-mongoose.model('users', userSchema);
+mongoose.model('List', listSchema);

@@ -7,6 +7,7 @@ const passport = require('passport');
 
 // Mongoose models
 require('./models/User');
+require('./models/List');
 
 // Services
 require('./services/passport');
@@ -26,6 +27,7 @@ app.use(passport.session());
 
 // Routes
 require('./routes/authRoutes')(app);
+require('./routes/listRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
     // Express will serve up production assets

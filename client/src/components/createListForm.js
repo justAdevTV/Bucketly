@@ -3,17 +3,23 @@ import { Field, FieldArray, reduxForm } from 'redux-form';
 import {connect} from 'react-redux';
 import { createList } from '../actions';
 
+import {Button, Icon} from 'react-materialize';
+
 class CreateListForm extends Component {
     
+    componentDidMount() {
+
+    }
+
     renderInput(field) {
         const { meta: { touched, error } } = field;
         const className = `form-group ${touched && error ? 'has-danger' : ''}`;
 
         return (
-            <div className={className}>
+            <div className="input-field">
                 <label>{field.label}</label>
                 <input 
-                    className="form-control"
+                    className="black-text"
                     type="text"
                     {...field.input}
                 />
@@ -31,11 +37,11 @@ class CreateListForm extends Component {
         return (
             <div className={className}>
                 <label>{field.label}</label>
-                <textarea 
-                    className="form-control"
-                    type="text"
-                    {...field.input}
-                />
+                <div className="input-field black-text">
+                    <i className="material-icons prefix">mode_edit</i>
+                    <textarea id="textarea-label" className="materialize-textarea" {...field.input}></textarea>
+                    <label for="textarea-label">Item description</label>
+                </div>
                 <div className="text-help">
                     {touched ? error : ''}
                 </div>
@@ -47,11 +53,7 @@ class CreateListForm extends Component {
         <ul>
             {fields.map((item, index) =>
                 <li key={index}>
-                    <button
-                        type="button"
-                        title="Remove Item"
-                        onClick={() => fields.remove(index)}/>
-                    <h4>Item #{index + 1}</h4>
+                    <h5 className="black-text">Item #{index + 1}</h5>
 
                     <Field
                         label="Item Title"
@@ -64,10 +66,22 @@ class CreateListForm extends Component {
                         type="text"
                         component={this.renderTextBox}
                         placeholder="Item description"/>
+                    <br />
+                    <Button
+                        className="red"
+                        onClick={() => fields.remove(index)}
+                        waves='light'>Remove Item
+                        <Icon right>delete</Icon>
+                    </Button>
                 </li>
             )}
-            <li>
-                <button type="button" onClick={() => fields.push({})}>Add Item</button>
+            <li className="center">
+                <Button 
+                    className="green"
+                    onClick={() => fields.push({})} 
+                    waves='light'>Add Item
+                    <Icon right>library_add</Icon>
+                </Button>
             </li>
         </ul>
     )
@@ -89,7 +103,10 @@ class CreateListForm extends Component {
                     component={this.renderInput}
                 />
                 <FieldArray name="listItems" component={this.renderItems}/>
-                <button type="submit" className="btn btn-primary">Submit</button>       
+                <Button className="right blue" type="submit" waves='light'>
+                    Submit
+                </Button>  
+                <br />
             </form>
         );
     }

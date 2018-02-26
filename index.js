@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const keys = require('./config/keys');
 const app = express();
 const passport = require('passport');
+const bodyParser = require('body-parser');
 
 // Mongoose models
 require('./models/User');
@@ -21,6 +22,11 @@ app.use(
         keys: [keys.cookieKey]
     })
 );
+
+app.use(bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 
 app.use(passport.initialize());
 app.use(passport.session());

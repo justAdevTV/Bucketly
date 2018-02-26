@@ -5,18 +5,29 @@ const Lists = mongoose.model('List');
 module.exports = (app) => {
 
     app.get('/api/lists', (req, res) => {
-        res.send(Lists);
+        Lists.find(function(err, lists) {
+            if (err)
+                res.send(err);
+
+            res.json(lists);
+        });
     });
 
     app.get('/api/lists/:listId', (req, res) => {
-        res.send('Getting List');
+        Lists.findById(req.params.listId, function(err, list) {
+            if (err)
+                res.send(err);
+            res.json(list);
+        });
     });
 
     app.post('/api/createList', requireAuth, (req, res) => {
 
+        const body = req.body;
+
         Lists.create({
-            listName: req.listName,
-            items: req.listItems,
+            listName: body.listName,
+            items: body.listItems,
             _user: req.user._id,
             creationDate: new Date()
         }, (err, list_instance) => {

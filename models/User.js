@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-    facebookId: String,
-    lists: [String]
+    facebookId: String
 });
 
 mongoose.model('users', userSchema);

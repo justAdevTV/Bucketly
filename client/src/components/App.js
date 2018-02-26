@@ -4,9 +4,10 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import NavBar from './Nav';
 import * as actions from '../actions';
 
+import CreateList from './CreateList';
+
 const Landing = () => <h2>Home Page</h2>;
 const Lists = () => <h2>Lists</h2>;
-const ListNew = () => <h2>Create List</h2>;
 
 class App extends Component {
     
@@ -22,7 +23,7 @@ class App extends Component {
                         <NavBar />
                         <Route exact path="/" component={Landing} />
                         <Route exact path="/lists" component={Lists} />
-                        <Route exact path="/lists/create" component={ListNew} />
+                        <Route exact path="/lists/create" component={CreateList} />
                     </div>
                 </BrowserRouter>
             </div>

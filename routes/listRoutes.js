@@ -21,8 +21,6 @@ module.exports = (app) => {
             creationDate: new Date()
         }, (err, list_instance) => {
             if (err) return handleError(err);
-            req.user.lists.push(list_instance._id);
-            req.user.save();
             
             res.redirect('/lists/' + list_instance._id);
         });

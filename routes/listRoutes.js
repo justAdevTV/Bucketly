@@ -4,7 +4,7 @@ const Lists = mongoose.model('List');
 
 module.exports = (app) => {
 
-    app.get('api/lists', (req, res) => {
+    app.get('/api/lists', (req, res) => {
         res.send(Lists);
     });
 
@@ -12,8 +12,8 @@ module.exports = (app) => {
         res.send('Getting List');
     });
 
-    app.post('api/createList', requireAuth, (req, res) => {
-        
+    app.post('/api/createList', requireAuth, (req, res) => {
+
         Lists.create({
             listName: req.listName,
             items: req.listItems,
@@ -27,8 +27,7 @@ module.exports = (app) => {
     
     });
 
-
-    app.get('api/currentUserList', requireAuth, (req, res) => {
+    app.get('/api/currentUserList', requireAuth, (req, res) => {
         List.find({ '_user': req.user._id }, (err, list) => {
             if (err) return handleError(err);
             res.send(list);

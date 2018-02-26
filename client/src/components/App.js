@@ -5,9 +5,9 @@ import NavBar from './Nav';
 import * as actions from '../actions';
 
 import CreateList from './CreateList';
+import Lists from './Lists';
 
 const Landing = () => <h2>Home Page</h2>;
-const Lists = () => <h2>Lists</h2>;
 
 class App extends Component {
     

@@ -20,11 +20,11 @@ export const createList = (values, callback) => async dispatch => {
 }
 
 export const fetchLists = () => async dispatch => {
-    const request = await axios.get('api/lists');
+    const request = await axios.get('/api/lists');
 
     dispatch ({
         type: FETCH_LISTS,
-        payload: request
+        payload: request.data
     });
 }
 

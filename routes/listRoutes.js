@@ -33,7 +33,7 @@ module.exports = (app) => {
         }, (err, list_instance) => {
             if (err) return handleError(err);
             
-            res.redirect('/lists/' + list_instance._id);
+            // res.redirect('/lists/' + list_instance._id);
         });
     
     });

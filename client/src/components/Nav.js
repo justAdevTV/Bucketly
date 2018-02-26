@@ -17,6 +17,7 @@ class Nav extends Component {
                 return [
                     <li key="lists"><Link to="/lists">Lists</Link></li>,
                     <li key="createList"><Link to="lists/create">Create List</Link></li>,
+                    <li key="myAccount"><Link to="myAccount">My Account</Link></li>,
                     <li key="logout"><a href="/api/logout">Logout</a></li>
                 ]
         }

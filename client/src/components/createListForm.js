@@ -40,7 +40,7 @@ class CreateListForm extends Component {
                 <div className="input-field black-text">
                     <i className="material-icons prefix">mode_edit</i>
                     <textarea id="textarea-label" className="materialize-textarea" {...field.input}></textarea>
-                    <label for="textarea-label">Item description</label>
+                    <label htmlFor="textarea-label">Item description</label>
                 </div>
                 <div className="text-help">
                     {touched ? error : ''}

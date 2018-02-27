@@ -12,14 +12,15 @@ class List extends Component {
     render () {
         const list = this.props.lists;
 
-        if (!list) {
+        if (!list.data) {
             return <div>Loading...</div>;
-        } 
-        return (
-            <div>
-               <h2>{list.data.listName}</h2>
-            </div>
-        );
+        } else {
+            return (
+                <div>
+                   <h2>{list.data.listName}</h2>
+                </div>
+            );
+        }
 
     };
 }

@@ -39,9 +39,20 @@ module.exports = (app) => {
     });
 
     app.get('/api/currentUserList', requireAuth, (req, res) => {
-        List.find({ '_user': req.user._id }, (err, list) => {
+        Lists.find({ '_user': req.user._id }, (err, list) => {
             if (err) return handleError(err);
             res.send(list);
+        });
+    });
+
+    app.delete('/api/deleteList/:listId', requireAuth ,function(req, res) {
+        Lists.remove({
+            _id: req.params.listId
+        }, function(err, list) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Successfully deleted' });
         });
     });
 

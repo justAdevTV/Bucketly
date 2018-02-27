@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { FETCH_USER, CREATE_LIST, FETCH_LIST, FETCH_LISTS } from './types';
+import { FETCH_USER, CREATE_LIST, FETCH_LIST, FETCH_LISTS, FETCH_USER_LISTS, DELETE_LIST } from './types';
+import { request } from 'http';
 
 export const fetchUser = () => async dispatch => {
     const res = await axios.get('/api/current_user');
@@ -28,11 +29,29 @@ export const fetchLists = () => async dispatch => {
     });
 }
 
+export const fetchUserLists = () => async dispatch => {
+    const res = await axios.get('/api/currentUserList');
+
+    dispatch({
+        type: FETCH_USER_LISTS,
+        payload: res.data
+    });
+}
+
 export const fetchList = (id) => async dispatch => {
     const request = await axios.get(`/api/lists/${id}`);
 
     dispatch ({
         type: FETCH_LIST,
+        payload: request
+    });
+}
+
+export const deleteList = (id) => async dispatch => {
+    const request = await axios.delete(`/api/deleteList/${id}`);
+
+    dispatch({
+        type: DELETE_LIST,
         payload: request
     });
 }

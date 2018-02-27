@@ -5,6 +5,7 @@ import NavBar from './Nav';
 import * as actions from '../actions';
 
 import CreateList from './CreateList';
+import MyAccount from './MyAccount';
 import Lists from './Lists';
 import List from './List';
 
@@ -23,9 +24,11 @@ class App extends Component {
                     <div>
                         <NavBar />
                         <Route exact path="/" component={Landing} />
+                        <Route exact path="/myAccount" component={MyAccount} />
                         <Route exact path="/lists" component={Lists} />
                         <Route exact path="/lists/create" component={CreateList} />
                         <Route exact path="/lists/:id" component={List}/>
+                        <Route exact path="list/:id/edit" component={Lists} />
                     </div>
                 </BrowserRouter>
             </div>

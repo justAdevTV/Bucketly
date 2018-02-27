@@ -8,7 +8,6 @@ class Lists extends Component {
 
     componentDidMount() {
         this.props.fetchLists();
-        console.log(this.props.lists);
     }
 
     renderLists(){
